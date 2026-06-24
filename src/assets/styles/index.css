@@ -1,15 +1,57 @@
 @import 'tailwindcss';
 
+@font-face {
+	font-family: 'Google Sans';
+	src: url('../fonts/GoogleSans-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Google Sans';
+	src: url('../fonts/GoogleSans-Italic.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Google Sans';
+	src: url('../fonts/GoogleSans-Medium.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Google Sans';
+	src: url('../fonts/GoogleSans-SemiBold.woff2') format('woff2');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Google Sans';
+	src: url('../fonts/GoogleSans-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
 @theme {
 	--color-primary: #26c17e;
 	--color-foreground: #222935;
 	--color-background: #ffffff;
 	--color-card: #dddddd;
 	--color-dimmed: #667081;
+
+	--font-sans: 'Google Sans', Arial, sans-serif;
 }
 
 @layer base {
 	body {
-		@apply bg-background text-foreground;
+		@apply bg-background text-foreground font-sans;
 	}
 }
