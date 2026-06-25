@@ -1,3 +1,3 @@
 export const Inner = () => {
-	return <div>Inner</div>;
+  return <div>Inner</div>;
 };
