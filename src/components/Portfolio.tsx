@@ -6,6 +6,7 @@ import type { ProjectScope } from '@/types/portfolio.types';
 import { cn } from '@/utils/cn';
 import { filterProjects } from '@/utils/filterProjects';
 import { useState } from 'react';
+import { PortfolioInfo } from './PortfolioInfo';
 
 export const Portfolio = () => {
   const [targetScope, setTargetScope] = useState<ProjectScope | null>(null);
@@ -37,18 +38,7 @@ export const Portfolio = () => {
               alt={`${project.title} screenshot`}
               className="h-full w-full object-cover"
             />
-            <div className="absolute right-0 bottom-0 left-0 flex h-full translate-y-full flex-col gap-2 bg-white/80 p-4 backdrop-blur-sm transition-transform group-hover:translate-y-0">
-              <p className="font-bold">{project.title}</p>
-              <p>{project.description}</p>
-              <a
-                href={project.source}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-700 underline"
-              >
-                View source
-              </a>
-            </div>
+            <PortfolioInfo project={project} />
           </div>
         ))}
       </div>
