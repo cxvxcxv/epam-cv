@@ -1,4 +1,5 @@
 import type { FeedbackDatum } from '@/types/feedback.types';
+import { Info } from './Info';
 
 interface FeedbackProps {
   data: FeedbackDatum[];
@@ -9,9 +10,7 @@ export const Feedback = ({ data }: FeedbackProps) => {
     <div className="p-8">
       {data.map(f => (
         <div key={data.indexOf(f)} className="flex flex-col gap-4">
-          <div className="bg-card p-4">
-            <p>{f.content}</p>
-          </div>
+          <Info content={f.content} />
           <div className="flex items-center gap-4">
             <img
               src={f.avatar}
