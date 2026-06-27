@@ -1,16 +1,16 @@
 import { CONTACT_LINKS } from '@/constants/contacts.constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router';
 
 export const Contacts = () => {
   return (
     <div>
       {CONTACT_LINKS.map(link => (
-        <Link
+        <a
           key={link.href}
-          to={link.href}
+          href={link.href}
           className="flex h-16 items-center gap-4 p-2"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <FontAwesomeIcon
             icon={link.icon}
@@ -23,7 +23,7 @@ export const Contacts = () => {
               <p className="text-dimmed">{link.username}</p>
             ) : null}
           </div>
-        </Link>
+        </a>
       ))}
     </div>
   );
