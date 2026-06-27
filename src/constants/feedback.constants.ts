@@ -1,4 +1,4 @@
-import type { FeedbackDatum } from './feedback.types';
+import type { FeedbackDatum } from '@/types/feedback.types';
 
 export const FEEDBACK_DATA: FeedbackDatum[] = [
   {
