@@ -38,7 +38,7 @@ export const Inner = () => {
       <Box title="Contacts" id={APP_SECTIONS.CONTACTS}>
         <Contacts />
       </Box>
-      <Box title="Feedbacks">
+      <Box title="Feedbacks" id={APP_SECTIONS.FEEDBACKS}>
         <Feedback data={FEEDBACK_DATA} />
       </Box>
     </>

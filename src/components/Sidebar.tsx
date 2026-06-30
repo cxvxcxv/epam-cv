@@ -10,6 +10,21 @@ export const Sidebar = () => {
 
   const [activeSection, setActiveSection] = useState('');
 
+  const handleTabClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string,
+  ) => {
+    e.preventDefault();
+
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
   useEffect(() => {
     const observers = NAVIGATION_TABS.map(tab => {
       const el = document.getElementById(tab.sectionId);
@@ -49,7 +64,7 @@ export const Sidebar = () => {
             <a
               key={tab.sectionId}
               href={`#${tab.sectionId}`}
-              onClick={() => setActiveSection(tab.sectionId)}
+              onClick={e => handleTabClick(e, tab.sectionId)}
               className={cn(
                 'flex items-center justify-center gap-5 p-5 whitespace-nowrap transition-colors',
                 'text-dimmed hover:text-primary',
