@@ -1,32 +1,16 @@
-export const TIMELINE_DATA = [
-  {
-    date: '2022',
-    title: '1st Oskemen Hackathon',
-    content:
-      "3rd Place. Built a weather web application with geolocation features, providing real-time forecasts tailored to the user's location.",
-  },
-  {
-    date: '2022',
-    title: '2nd Oskemen Hackathon',
-    content:
-      '2nd Place. Developed a collaborative web application for task management (to-do app) within 48 hours, focusing on usability and team-based workflows.',
-  },
+import type { TimelineDatum } from '@/types/timeline.types';
+
+export const TIMELINE_DATA: TimelineDatum[] = [
   {
     date: '2023',
-    title: 'Semey Hackathon',
+    title: 'Nazarbayev University',
     content:
-      'Participated in a 48-hour coding challenge focused on developing a mobile travel application to enhance trip planning and user experience.',
+      'Enrolled in the Nazarbayev University Foundation Year Program (NUFYP) and successfully completed it. However, I decided to transition my academic path toward a university that offered a greater emphasis on hands-on software development and engineering.',
   },
   {
-    date: '2026',
-    title: 'Dual Education at Cushpen Group',
+    date: '2024',
+    title: 'Astana IT University Bachelor',
     content:
-      'Combined theoretical academic studies with intensive hands-on training to master modern web technologies and agile software workflows.',
-  },
-  {
-    date: '2026',
-    title: 'Industrial Practice at Cushpen Group',
-    content:
-      'Contributed directly to the production environment by participating in the development, testing, and optimization of enterprise components for their medical information systems and software solutions.',
+      'Enrolled in the Bachelor’s program, choosing AITU specifically because it provided significantly more practical, real-world technical work and project-based learning in comparison to the theoretical focus at NU.',
   },
 ];

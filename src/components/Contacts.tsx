@@ -8,7 +8,7 @@ export const Contacts = () => {
         <a
           key={link.href}
           href={link.href}
-          className="flex h-16 items-center gap-4 p-2"
+          className="flex h-16 items-center gap-4"
           target="_blank"
           rel="noopener noreferrer"
         >

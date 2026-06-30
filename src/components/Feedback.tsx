@@ -7,7 +7,7 @@ interface FeedbackProps {
 
 export const Feedback = ({ data }: FeedbackProps) => {
   return (
-    <div className="p-8">
+    <div>
       {data.map(f => (
         <div key={data.indexOf(f)} className="flex flex-col gap-4">
           <Info content={f.content} />

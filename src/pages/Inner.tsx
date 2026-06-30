@@ -14,10 +14,16 @@ export const Inner = () => {
     <>
       <Box title="About me" id={APP_SECTIONS.ABOUT} className="mt-16">
         <p>
-          Entry-level Front-End Developer focused on building responsive and
-          accessible web interfaces using React and modern JavaScript. Strong
-          foundation in UI state management, component-based architecture, and
-          clean, maintainable code.
+          A budding front-end developer building highly efficient, performant,
+          and accessible web interfaces using React, TypeScript, and modern
+          JavaScript ecosystems. I am deeply committed to writing clean,
+          maintainable, and semantically correct code and have a deep
+          understanding of component architecture, effective UI state management
+          strategies, and modern styling solutions like Tailwind CSS. Guided by
+          user-centered design principles, I focus on bridging the gap between
+          complex back-end logic and seamless, intuitive user interfaces,
+          actively applying industry best practices such as version control
+          systems and modular web design.
         </p>
       </Box>
       <Box title="Education" id={APP_SECTIONS.EDUCATION}>

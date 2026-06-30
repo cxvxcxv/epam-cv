@@ -6,7 +6,7 @@ interface ExpertiseProps {
 
 export const Expertise = ({ data }: ExpertiseProps) => {
   return (
-    <div className="flex flex-col gap-8 p-8">
+    <div className="flex flex-col gap-8">
       {data.map(e => (
         <div key={data.indexOf(e)} className="grid grid-cols-[1fr_3fr] gap-8">
           <div>
@@ -15,7 +15,7 @@ export const Expertise = ({ data }: ExpertiseProps) => {
           </div>
           <div>
             <p className="font-bold">{e.info.job}</p>
-            <p>{e.info.description}</p>
+            <p className="text-sm">{e.info.description}</p>
           </div>
         </div>
       ))}

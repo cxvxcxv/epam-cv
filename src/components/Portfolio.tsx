@@ -27,7 +27,7 @@ export const Portfolio = () => {
           </button>
         ))}
       </div>
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid gap-8 lg:grid-cols-2">
         {filteredProjects.map(project => (
           <div
             key={`${project.title}-${targetScope}`}
