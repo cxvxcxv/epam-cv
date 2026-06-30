@@ -51,12 +51,13 @@ export const Sidebar = () => {
   return (
     <aside
       className={cn(
-        'bg-foreground text-background sticky top-0 left-0 h-screen transition-all',
+        'bg-foreground text-background sticky top-0 left-0 z-40 h-screen transition-all',
+        'flex flex-col justify-between',
         isOpen ? 'w-20 translate-x-0 lg:w-64' : 'w-0 -translate-x-full lg:w-20',
         'lg:translate-x-0',
       )}
     >
-      <div className="mt-4 mb-12 flex flex-col items-center justify-center overflow-hidden px-4">
+      <div className="mt-4 mb-8 flex shrink-0 flex-col items-center justify-center px-4">
         <a
           href="https://github.com/cxvxcxv"
           target="_blank"
@@ -77,7 +78,7 @@ export const Sidebar = () => {
           Alisher Askar
         </p>
       </div>
-      <div className="flex h-full flex-col overflow-hidden">
+      <div className="flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
         {NAVIGATION_TABS.map(tab => {
           const isActive = activeSection === tab.sectionId;
 
@@ -113,7 +114,7 @@ export const Sidebar = () => {
 
         <Link
           to="/"
-          className="bg-primary mx-auto mt-auto mb-5 flex items-center rounded-md p-5 py-3 text-sm whitespace-nowrap lg:bg-transparent"
+          className="bg-primary mx-auto mt-auto mb-5 flex items-center gap-2 rounded-md p-5 py-3 text-sm whitespace-nowrap lg:bg-transparent"
         >
           <FontAwesomeIcon icon={faChevronLeft} />
           <span
@@ -128,7 +129,7 @@ export const Sidebar = () => {
       </div>
 
       <button
-        className="bg-foreground text-background absolute top-5 -right-7 flex h-7 w-7 items-center justify-center rounded-r-md"
+        className="bg-foreground text-background absolute top-5 -right-7 flex h-7 w-7 cursor-pointer items-center justify-center rounded-r-md"
         onClick={() => setIsOpen(!isOpen)}
       >
         <FontAwesomeIcon icon={faBars} />
