@@ -56,6 +56,27 @@ export const Sidebar = () => {
         'lg:translate-x-0',
       )}
     >
+      <div className="mt-4 mb-12 flex flex-col items-center justify-center overflow-hidden px-4">
+        <a
+          href="https://github.com/cxvxcxv"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://avatars.githubusercontent.com/u/98476080?v=4"
+            alt="Avatar"
+            className="border-background max-h-24 w-full max-w-24 rounded-full border"
+          />
+        </a>
+        <p
+          className={cn(
+            'mt-2 hidden font-bold text-nowrap',
+            isOpen && 'lg:block',
+          )}
+        >
+          Alisher Askar
+        </p>
+      </div>
       <div className="flex h-full flex-col overflow-hidden">
         {NAVIGATION_TABS.map(tab => {
           const isActive = activeSection === tab.sectionId;
