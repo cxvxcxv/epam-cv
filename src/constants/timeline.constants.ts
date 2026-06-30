@@ -9,7 +9,7 @@ export const TIMELINE_DATA: TimelineDatum[] = [
   },
   {
     date: '2024',
-    title: 'Astana IT University Bachelor',
+    title: 'Astana IT University',
     content:
       'Enrolled in the Bachelor’s program, choosing AITU specifically because it provided significantly more practical, real-world technical work and project-based learning in comparison to the theoretical focus at NU.',
   },
