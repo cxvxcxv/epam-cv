@@ -2,10 +2,11 @@ import { ENDPOINTS } from '@/constants/api.constants';
 import { SKILLS } from '@/constants/skills.constants';
 import { TIMELINE_DATA } from '@/constants/timeline.constants';
 import type { Skill } from '@/types/skill.types';
-import { http, HttpResponse } from 'msw';
+import { delay, http, HttpResponse } from 'msw';
 
 export const handlers = [
-  http.get(`/api/${ENDPOINTS.SKILLS}`, () => {
+  http.get(`/api/${ENDPOINTS.SKILLS}`, async () => {
+    await delay(3000);
     return HttpResponse.json(SKILLS);
   }),
 
@@ -21,7 +22,8 @@ export const handlers = [
     },
   ),
 
-  http.get(`/api/${ENDPOINTS.EDUCATIONS}`, () => {
+  http.get(`/api/${ENDPOINTS.EDUCATIONS}`, async () => {
+    await delay(3000);
     return HttpResponse.json(TIMELINE_DATA);
   }),
 ];

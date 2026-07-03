@@ -7,9 +7,14 @@ import { Timeline } from '@/components/Timeline';
 import { EXPERTISE_DATA } from '@/constants/expertise.constants';
 import { FEEDBACK_DATA } from '@/constants/feedback.constants';
 import { APP_SECTIONS } from '@/constants/navigation.constants';
-import { TIMELINE_DATA } from '@/constants/timeline.constants';
+import { useGetEducationsQuery } from '@/store/apiSlice';
 
 export const Inner = () => {
+  const {
+    data: educations,
+    isLoading: isEducationsLoading,
+    error: educationsError,
+  } = useGetEducationsQuery();
   return (
     <>
       <Box title="About me" id={APP_SECTIONS.ABOUT} className="mt-16">
@@ -27,7 +32,11 @@ export const Inner = () => {
         </p>
       </Box>
       <Box title="Education" id={APP_SECTIONS.EDUCATION}>
-        <Timeline data={TIMELINE_DATA} />
+        <Timeline
+          data={educations}
+          isLoading={isEducationsLoading}
+          error={educationsError}
+        />
       </Box>
       <Box title="Experience" id={APP_SECTIONS.EXPERIENCE}>
         <Expertise data={EXPERTISE_DATA} />

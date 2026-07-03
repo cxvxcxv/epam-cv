@@ -1,16 +1,38 @@
 import type { Education } from '@/types/timeline.types';
+import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import type { SerializedError } from '@reduxjs/toolkit';
+import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
 interface TimelineProps {
-  data: Education[];
+  data?: Education[];
+  isLoading: boolean;
+  error: FetchBaseQueryError | SerializedError | undefined;
 }
 
-export const Timeline = ({ data }: TimelineProps) => {
+export const Timeline = ({ data, isLoading, error }: TimelineProps) => {
+  if (isLoading)
+    return (
+      <div className="flex justify-center">
+        <FontAwesomeIcon
+          className="text-primary animate-spin"
+          icon={faSyncAlt}
+        />
+      </div>
+    );
+
+  if (error)
+    return (
+      <p className="text-center text-sm text-red-500">
+        Something went wrong: please review your internet connection!
+      </p>
+    );
   return (
     <div className="h-[30vh] max-h-[80vh] overflow-y-auto py-6">
       <div className="relative flex flex-col gap-8">
         <div className="bg-primary absolute top-0 bottom-0 left-12 w-1" />
 
-        {data.map(item => (
+        {data?.map(item => (
           <div key={item.title} className="relative flex items-start pl-24">
             <div className="absolute top-3 left-0 z-10 flex w-24 justify-center">
               <span className="bg-background py-1 font-medium tracking-wide">
