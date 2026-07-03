@@ -1,7 +1,7 @@
-import type { TimelineDatum } from '@/types/timeline.types';
+import type { Education } from '@/types/timeline.types';
 
 interface TimelineProps {
-  data: TimelineDatum[];
+  data: Education[];
 }
 
 export const Timeline = ({ data }: TimelineProps) => {

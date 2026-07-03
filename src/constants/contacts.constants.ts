@@ -21,4 +21,4 @@ export const CONTACT_LINKS: ContactLink[] = [
     href: 'https://t.me/cxv495',
     icon: faTelegram,
   },
-];
+] as const;

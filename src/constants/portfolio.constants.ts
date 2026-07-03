@@ -51,4 +51,4 @@ export const PORTFOLIO_DATA: Project[] = [
       'https://github.com/user-attachments/assets/293ed7dd-16be-46fd-b40a-b8f065e36ce1',
     scope: 'fullstack',
   },
-];
+] as const;

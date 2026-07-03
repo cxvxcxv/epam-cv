@@ -46,4 +46,4 @@ export const EXPERTISE_DATA: ExpertiseDatum[] = [
         'Contributed directly to the production environment by participating in the development, testing, and optimization of enterprise components for their medical information systems and software solutions.',
     },
   },
-];
+] as const;

@@ -31,4 +31,4 @@ export const NAVIGATION_TABS: NavigationTab[] = [
   { name: 'Portfolio', icon: faFolderOpen, sectionId: APP_SECTIONS.PORTFOLIO },
   { name: 'Contacts', icon: faAddressBook, sectionId: APP_SECTIONS.CONTACTS },
   { name: 'Feedbacks', icon: faCommentDots, sectionId: APP_SECTIONS.FEEDBACKS },
-];
+] as const;

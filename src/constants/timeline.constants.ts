@@ -1,6 +1,6 @@
-import type { TimelineDatum } from '@/types/timeline.types';
+import type { Education } from '@/types/timeline.types';
 
-export const TIMELINE_DATA: TimelineDatum[] = [
+export const TIMELINE_DATA: Education[] = [
   {
     date: '2023',
     title: 'Nazarbayev University',
@@ -13,4 +13,4 @@ export const TIMELINE_DATA: TimelineDatum[] = [
     content:
       'Enrolled in the Bachelor’s program, choosing AITU specifically because it provided significantly more practical, real-world technical work and project-based learning in comparison to the theoretical focus at NU.',
   },
-];
+] as const;
