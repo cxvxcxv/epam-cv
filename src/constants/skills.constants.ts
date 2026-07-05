@@ -1,6 +1,6 @@
 import type { Skill } from '@/types/skill.types';
 
-export const SKILLS: Skill[] = [
+export const INITIAL_SKILLS: Skill[] = [
   {
     id: 'c4273cd6-0f66-4562-8003-d9cb4db493c6',
     name: 'HTML5 & CSS3',
