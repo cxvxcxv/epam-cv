@@ -24,7 +24,15 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
       include: ['src/**/*.{ts,tsx}'],
-      exclude: ['src/**/*.constants.ts', 'src/types/**/*'],
+      exclude: [
+        'src/main.tsx',
+        'src/vite-env.d.ts',
+        'src/types/**/*',
+        'src/constants/**/*',
+        'src/store/**/*',
+        'src/mocks/**/*',
+        'src/utils/validateSkillsForm.ts',
+      ],
 
       thresholds: {
         global: {

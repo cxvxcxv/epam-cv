@@ -10,6 +10,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 export const Input = ({
   label,
   id,
+  name,
   error,
   className,
   wrapperClassName,
@@ -17,10 +18,11 @@ export const Input = ({
 }: InputProps) => {
   return (
     <div className={wrapperClassName}>
-      <label htmlFor={id} className="mr-2">
+      <label htmlFor={id || name} className="mr-2">
         {label}
       </label>
       <input
+        id={id || name}
         className={cn(
           'focus:border-primary disabled:border-dimmed disabled:bg-dimmed/10 rounded-md border px-4 py-2 outline-none disabled:cursor-not-allowed',
           { 'border-danger': error },
