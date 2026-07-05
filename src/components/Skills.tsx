@@ -3,6 +3,7 @@ import { faEdit, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { Button } from './Button';
+import { SkillsChart } from './SkillsChart';
 import { SkillsForm } from './SkillsForm';
 
 export const Skills = () => {
@@ -27,11 +28,16 @@ export const Skills = () => {
     );
 
   return (
-    <div>
-      <Button icon={faEdit} onClick={() => setIsEditOpen(!isEditOpen)}>
+    <div className="flex flex-col gap-4">
+      <Button
+        icon={faEdit}
+        onClick={() => setIsEditOpen(!isEditOpen)}
+        className="w-fit self-end"
+      >
         {isEditOpen ? 'Close edit' : 'Open edit'}
       </Button>
       {isEditOpen && <SkillsForm />}
+      <SkillsChart skills={skills} />
     </div>
   );
 };

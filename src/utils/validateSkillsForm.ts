@@ -1,6 +1,6 @@
 import type { Skill } from '@/types/skill.types';
 
-export const validateSkillsForm = (values: Skill) => {
+export const validateSkillsForm = (values: Omit<Skill, 'id'>) => {
   const errors: Partial<Record<keyof Skill, string>> = {};
   if (!values.name) errors.name = 'Skill name is a required field';
 

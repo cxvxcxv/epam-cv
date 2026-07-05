@@ -1,18 +1,24 @@
+import { useAddSkillMutation } from '@/store/apiSlice';
 import { validateSkillsForm } from '@/utils/validateSkillsForm';
 import { Formik } from 'formik';
 import { Button } from './Button';
 import { Input } from './Input';
 
 export const SkillsForm = () => {
+  const [addSkill] = useAddSkillMutation();
   return (
     <Formik
       initialValues={{ name: '', range: 0 }}
       validate={validateSkillsForm}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
+      onSubmit={async (values, { setSubmitting, resetForm }) => {
+        try {
+          await addSkill(values).unwrap();
+          resetForm();
+        } catch (error) {
+          console.error('Failed to add skill:', error);
+        } finally {
           setSubmitting(false);
-        }, 400);
+        }
       }}
     >
       {({
@@ -32,7 +38,7 @@ export const SkillsForm = () => {
             type="text"
             name="name"
             label="Name"
-            placeholder="JavaScript"
+            placeholder="Git"
             error={errors.name && touched.name ? errors.name : undefined}
             onChange={handleChange}
             onBlur={handleBlur}

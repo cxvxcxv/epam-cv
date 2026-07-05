@@ -4,21 +4,26 @@ import { TIMELINE_DATA } from '@/constants/timeline.constants';
 import type { Skill } from '@/types/skill.types';
 import { delay, http, HttpResponse } from 'msw';
 
+let mockSkillsDb = [...SKILLS];
+
 export const handlers = [
   http.get(`/api/${ENDPOINTS.SKILLS}`, async () => {
     await delay(3000);
-    return HttpResponse.json(SKILLS);
+    return HttpResponse.json(mockSkillsDb);
   }),
 
-  http.post<any, Partial<Skill>>(
+  http.post<any, Omit<Skill, 'id'>>(
     `/api/${ENDPOINTS.SKILLS}`,
     async ({ request }) => {
-      const newSkill = await request.json();
+      const body = await request.json();
+      const newSkill = {
+        id: crypto.randomUUID(),
+        ...body,
+      };
 
-      return HttpResponse.json(
-        { message: 'Skill created successfully!', data: newSkill },
-        { status: 201 },
-      );
+      mockSkillsDb.push(newSkill);
+
+      return HttpResponse.json(newSkill, { status: 201 });
     },
   ),
 
