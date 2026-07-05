@@ -3,6 +3,7 @@ import { Contacts } from '@/components/Contacts';
 import { Expertise } from '@/components/Expertise';
 import { Feedback } from '@/components/Feedback';
 import { Portfolio } from '@/components/Portfolio';
+import { Skills } from '@/components/Skills';
 import { Timeline } from '@/components/Timeline';
 import { EXPERTISE_DATA } from '@/constants/expertise.constants';
 import { FEEDBACK_DATA } from '@/constants/feedback.constants';
@@ -40,6 +41,9 @@ export const Inner = () => {
       </Box>
       <Box title="Experience" id={APP_SECTIONS.EXPERIENCE}>
         <Expertise data={EXPERTISE_DATA} />
+      </Box>
+      <Box title="Skills" id={APP_SECTIONS.SKILLS}>
+        <Skills />
       </Box>
       <Box title="Portfolio" id={APP_SECTIONS.PORTFOLIO}>
         <Portfolio />

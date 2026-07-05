@@ -23,7 +23,7 @@ export const Timeline = ({ data, isLoading, error }: TimelineProps) => {
 
   if (error)
     return (
-      <p className="text-center text-sm text-red-500">
+      <p className="text-danger text-center text-sm">
         Something went wrong: please review your internet connection!
       </p>
     );

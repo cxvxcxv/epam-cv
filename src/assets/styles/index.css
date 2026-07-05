@@ -46,7 +46,7 @@
   --color-background: #ffffff;
   --color-card: #dddddd;
   --color-dimmed: #667081;
-
+  --color-danger: #f56565;
   --font-sans: 'Google Sans', Arial, sans-serif;
 
   --animate-fadein: fadein 0.5s;
@@ -65,7 +65,7 @@
   body {
     @apply bg-background text-foreground font-sans;
   }
-  button {
+  /* button {
     @apply cursor-pointer;
-  }
+  } */
 }
