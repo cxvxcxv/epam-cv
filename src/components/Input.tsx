@@ -16,16 +16,18 @@ export const Input = ({
   wrapperClassName,
   ...props
 }: InputProps) => {
+  const inputId = id || name;
   return (
     <div className={wrapperClassName}>
-      <label htmlFor={id || name} className="mr-2">
+      <label htmlFor={inputId} className="mr-2">
         {label}
       </label>
       <input
-        id={id || name}
+        id={inputId}
         className={cn(
           'focus:border-primary disabled:border-dimmed disabled:bg-dimmed/10 rounded-md border px-4 py-2 outline-none disabled:cursor-not-allowed',
           { 'border-danger': error },
+          className,
         )}
         {...props}
       />

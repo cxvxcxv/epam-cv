@@ -1,50 +1,86 @@
-import { Input } from '@/components/Input';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Input } from '../components/Input'; // Adjust this path to match your folder structure!
 
-describe('Input Component', () => {
-  test('renders input with correct label and placeholder', () => {
+describe('input component', () => {
+  test('renders with bare minimum props', () => {
+    render(<Input value="" onChange={() => {}} />);
+
+    const inputEl = screen.getByRole('textbox');
+    expect(inputEl).toBeInTheDocument();
+  });
+
+  test('handles id and name combinations', () => {
+    const { rerender } = render(
+      <Input name="test-name" label="Label" value="" onChange={() => {}} />,
+    );
+    expect(screen.getByLabelText('Label')).toHaveAttribute('id', 'test-name');
+
+    rerender(
+      <Input
+        id="test-id"
+        name="test-name"
+        label="Label"
+        value=""
+        onChange={() => {}}
+      />,
+    );
+    expect(screen.getByLabelText('Label')).toHaveAttribute('id', 'test-id');
+  });
+
+  test('applies wrapperClassName to the outer container', () => {
     render(
       <Input
-        name="test-input"
-        label="Username"
-        placeholder="Enter username"
+        wrapperClassName="custom-wrapper-class"
         value=""
         onChange={() => {}}
       />,
     );
 
-    expect(screen.getByLabelText(/username/i)).toBeInTheDocument();
-    expect(screen.getByPlaceholderText(/enter username/i)).toBeInTheDocument();
+    const inputEl = screen.getByRole('textbox');
+    expect(inputEl.closest('div')).toHaveClass('custom-wrapper-class');
   });
 
-  test('displays error message when error prop is provided', () => {
+  test('applies custom className directly to the input element', () => {
+    render(
+      <Input className="custom-input-style" value="" onChange={() => {}} />,
+    );
+
+    const inputEl = screen.getByRole('textbox');
+    expect(inputEl).toHaveClass('custom-input-style');
+  });
+
+  test('handles active and inactive error states', () => {
+    const { rerender } = render(<Input value="" onChange={() => {}} />);
+    const inputEl = screen.getByRole('textbox');
+    expect(inputEl).not.toHaveClass('border-danger');
+
+    rerender(<Input error="invalid" value="" onChange={() => {}} />);
+    expect(screen.getByText('invalid')).toBeInTheDocument();
+  });
+
+  test('spreads rest props successfully', () => {
     render(
       <Input
-        name="test-input"
-        label="Username"
-        error="This field is required"
+        type="password"
+        disabled
+        placeholder="placeholder"
         value=""
         onChange={() => {}}
       />,
     );
 
-    expect(screen.getByText(/this field is required/i)).toBeInTheDocument();
+    const inputEl = screen.getByPlaceholderText('placeholder');
+    expect(inputEl).toBeDisabled();
+    expect(inputEl).toHaveAttribute('type', 'password');
   });
 
-  test('triggers onChange handler when user types', async () => {
+  test('fires onChange callback handler during user input', async () => {
     const handleChange = vi.fn();
-    render(
-      <Input
-        name="test-input"
-        label="Username"
-        value=""
-        onChange={handleChange}
-      />,
-    );
+    render(<Input value="" onChange={handleChange} />);
 
-    const inputEl = screen.getByLabelText(/username/i);
-    await userEvent.type(inputEl, 'A');
+    const inputEl = screen.getByRole('textbox');
+    await userEvent.type(inputEl, 'Z');
 
     expect(handleChange).toHaveBeenCalled();
   });

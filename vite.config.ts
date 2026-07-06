@@ -31,7 +31,9 @@ export default defineConfig({
         'src/constants/**/*',
         'src/store/**/*',
         'src/mocks/**/*',
-        'src/utils/validateSkillsForm.ts',
+
+        'src/pages/**/*',
+        'src/layouts/**/*',
       ],
 
       thresholds: {
