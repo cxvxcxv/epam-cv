@@ -1,21 +1,23 @@
-import { useAddSkillMutation } from '@/store/apiSlice';
+import { useAppDispatch } from '@/store';
+import { addSkill } from '@/store/skills/thunk';
 import { validateSkillsForm } from '@/utils/validateSkillsForm';
 import { Formik } from 'formik';
 import { Button } from './Button';
 import { Input } from './Input';
 
 export const SkillsForm = () => {
-  const [addSkill] = useAddSkillMutation();
+  const dispatch = useAppDispatch();
+
   return (
     <Formik
       initialValues={{ name: '', range: 0 }}
       validate={validateSkillsForm}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         try {
-          await addSkill(values).unwrap();
+          await dispatch(addSkill(values)).unwrap();
           resetForm();
         } catch (error) {
-          console.error('Failed to add skill:', error);
+          console.error('failed to add skill:', error);
         } finally {
           setSubmitting(false);
         }

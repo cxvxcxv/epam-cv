@@ -18,7 +18,7 @@ const mockTimelineData: Education[] = [
 describe('timeline component', () => {
   test('renders loading spinner when isLoading is true', () => {
     const { container } = render(
-      <Timeline data={[]} isLoading={true} error={undefined} />,
+      <Timeline data={[]} loading="pending" error={undefined} />,
     );
 
     const spinnerWrapper = container.querySelector('.animate-spin');
@@ -29,7 +29,7 @@ describe('timeline component', () => {
 
   test('renders error warning text message when error is present', () => {
     const mockError = { status: 500, data: 'server failure' };
-    render(<Timeline data={[]} isLoading={false} error={mockError} />);
+    render(<Timeline data={[]} loading="failed" error={mockError} />);
 
     const errorMessage = screen.getByText(/something went wrong/i);
     expect(errorMessage).toBeInTheDocument();
@@ -38,7 +38,11 @@ describe('timeline component', () => {
 
   test('renders timeline when data fetches successfully', () => {
     render(
-      <Timeline data={mockTimelineData} isLoading={false} error={undefined} />,
+      <Timeline
+        data={mockTimelineData}
+        loading="succeeded"
+        error={undefined}
+      />,
     );
 
     expect(screen.getByText('2023')).toBeInTheDocument();
@@ -60,7 +64,7 @@ describe('timeline component', () => {
 
   test('falls back if data is undefined', () => {
     const { container } = render(
-      <Timeline data={undefined} isLoading={false} error={undefined} />,
+      <Timeline data={undefined} loading="succeeded" error={undefined} />,
     );
 
     const cardElements = container.getElementsByClassName('bg-card');

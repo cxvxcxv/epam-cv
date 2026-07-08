@@ -8,14 +8,22 @@ import { Timeline } from '@/components/Timeline';
 import { EXPERTISE_DATA } from '@/constants/expertise.constants';
 import { FEEDBACK_DATA } from '@/constants/feedback.constants';
 import { APP_SECTIONS } from '@/constants/navigation.constants';
-import { useGetEducationsQuery } from '@/store/apiSlice';
+import { useAppDispatch, useAppSelector } from '@/store';
+import { fetchEducation } from '@/store/education/thunk';
+import { selectEducations } from '@/store/selectors';
+import { useEffect } from 'react';
 
 export const Inner = () => {
   const {
-    data: educations,
-    isLoading: isEducationsLoading,
+    entities: educations,
+    loading: educationsLoading,
     error: educationsError,
-  } = useGetEducationsQuery();
+  } = useAppSelector(selectEducations);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchEducation());
+  }, [dispatch]);
   return (
     <>
       <Box title="About me" id={APP_SECTIONS.ABOUT} className="mt-16">
@@ -35,7 +43,7 @@ export const Inner = () => {
       <Box title="Education" id={APP_SECTIONS.EDUCATION}>
         <Timeline
           data={educations}
-          isLoading={isEducationsLoading}
+          loading={educationsLoading}
           error={educationsError}
         />
       </Box>

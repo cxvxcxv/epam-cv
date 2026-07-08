@@ -1,16 +1,24 @@
-import { useGetSkillsQuery } from '@/store/apiSlice';
+import { useAppDispatch, useAppSelector } from '@/store';
+import { selectSkills } from '@/store/selectors';
+import { fetchSkills } from '@/store/skills/thunk';
 import { faEdit, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from './Button';
 import { SkillsChart } from './SkillsChart';
 import { SkillsForm } from './SkillsForm';
 
 export const Skills = () => {
-  const { data: skills, isLoading, error } = useGetSkillsQuery();
+  const dispatch = useAppDispatch();
+
+  const { entities: skills, loading, error } = useAppSelector(selectSkills);
   const [isEditOpen, setIsEditOpen] = useState(false);
 
-  if (isLoading)
+  useEffect(() => {
+    dispatch(fetchSkills());
+  }, [dispatch]);
+
+  if (loading === 'pending' || loading === 'idle')
     return (
       <div className="flex justify-center">
         <FontAwesomeIcon

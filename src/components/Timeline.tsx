@@ -1,3 +1,4 @@
+import type { EducationState } from '@/store/education/slice';
 import type { Education } from '@/types/timeline.types';
 import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,12 +7,12 @@ import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
 interface TimelineProps {
   data?: Education[];
-  isLoading: boolean;
+  loading: EducationState['loading'];
   error: FetchBaseQueryError | SerializedError | undefined;
 }
 
-export const Timeline = ({ data, isLoading, error }: TimelineProps) => {
-  if (isLoading)
+export const Timeline = ({ data, loading, error }: TimelineProps) => {
+  if (loading === 'pending' || loading === 'idle')
     return (
       <div className="flex justify-center">
         <FontAwesomeIcon
